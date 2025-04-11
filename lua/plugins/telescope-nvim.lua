@@ -22,7 +22,6 @@ return {
             { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Find commands" },
             { "<leader>fn", "<cmd>Telescope find_files cwd=~/.config/nvim<cr>", desc = "Find Neovim config files" },
             { "<leader>fu", "<cmd>Telescope undo<cr>", desc = "Undo Plugin" },
-            { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "TODO Plugin"},
         },
         config = function()
             require("telescope").setup {
