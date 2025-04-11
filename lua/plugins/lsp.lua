@@ -40,14 +40,8 @@ return {
 
             -- Helper to check executable availability
             local function exe_exists(cmd)
-                if venv_path then
-                    local venv_exe = venv_path .. "/bin/" .. cmd
-                    if vim.fn.executable(venv_exe) == 1 then return true end
-                end
                 return vim.fn.executable(cmd) == 1
             end
-
-            local pylsp_cmd = { 'pylsp' }
 
             -- Conditional plugin enabling
             local black_enabled = exe_exists("black")
@@ -112,32 +106,32 @@ return {
             -- })
 
             lspconfig.pylsp.setup({
-                cmd = pylsp_cmd,
-                filetypes = { "python" },
-                root_dir = util.root_pattern(".git", "pyproject.toml", "setup.py"),
-                settings = {
-                    pylsp = {
-                        plugins = {
-                            pylsp_black = { enabled = black_enabled, line_length = 88 },
-                            isort = { enabled = isort_enabled },
-                            -- Option 1: If you want to keep flake8 with a custom line length:
-                            flake8 = { enabled = flake8_enabled, maxLineLength = 88 },
-                            -- Option 2: If you want to disable flake8 altogether, uncomment the following line:
-                            -- flake8 = { enabled = false },
-                            pycodestyle = { enabled = false },
-                            mypy = { enabled = mypy_enabled },
-                            rope_autoimport = { enabled = true },
-                        },
-                    },
-                },
-                capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        callback = function() vim.lsp.buf.format() end,
-                    })
-                end,
-            })
+            --     cmd = pylsp_cmd,
+            --     filetypes = { "python" },
+            --     root_dir = util.root_pattern(".git", "pyproject.toml", "setup.py"),
+            --     settings = {
+            --         pylsp = {
+            --             plugins = {
+            --                 pylsp_black = { enabled = black_enabled, line_length = 88 },
+            --                 isort = { enabled = isort_enabled },
+            --                 -- Option 1: If you want to keep flake8 with a custom line length:
+            --                 flake8 = { enabled = flake8_enabled, maxLineLength = 88 },
+            --                 -- Option 2: If you want to disable flake8 altogether, uncomment the following line:
+            --                 -- flake8 = { enabled = false },
+            --                 pycodestyle = { enabled = false },
+            --                 mypy = { enabled = mypy_enabled },
+            --                 rope_autoimport = { enabled = true },
+            --             },
+            --         },
+            --     },
+            --     capabilities = capabilities,
+            --     on_attach = function(client, bufnr)
+            --         vim.api.nvim_create_autocmd("BufWritePre", {
+            --             buffer = bufnr,
+            --             callback = function() vim.lsp.buf.format() end,
+            --         })
+            --     end,
+            -- })
         end,
     },
 }
