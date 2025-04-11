@@ -73,8 +73,8 @@ return {
                 },
 
                 high_visibility = {
-                    lighter = false, -- Enable higher contrast text for lighter style
-                    darker = false -- Enable higher contrast text for darker style
+                    lighter = true, -- Enable higher contrast text for lighter style
+                    darker = true -- Enable higher contrast text for darker style
                 },
 
                 lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
