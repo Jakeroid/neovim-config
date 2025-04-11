@@ -87,6 +87,8 @@ vim.keymap.set('n', '<leader>D', '"+D', { noremap = true, desc = "Delete line to
 -- Paste from system clipboard
 vim.keymap.set({'n','v'}, '<leader>p', '"+p', { noremap = true, desc = "Paste from clipboard" })
 
+-- Disabled because with leader key as spacebar it makes delay while you type text
+-- That means if you use WezTerm with my config then you can't use CMD + V inside insert mode
 -- Past in insert mode. Prevent auto indent or comments while pasting a multiline block.
 -- vim.keymap.set({'i'}, '<leader>p', '<C-r>+', { noremap = true, desc = "Paste from clipboard" })
-vim.keymap.set({'i'}, '<leader>p', '<C-o>:set paste<CR><C-r>+<C-o>:set nopaste<CR>', { noremap = true, desc = "Paste from clipboard" })
+-- vim.keymap.set({'i'}, '<leader>p', '<C-o>:set paste<CR><C-r>+<C-o>:set nopaste<CR>', { noremap = true, desc = "Paste from clipboard" })
