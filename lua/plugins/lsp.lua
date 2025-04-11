@@ -65,6 +65,32 @@ return {
                 end,
             })
 
+            lspconfig.pyright.setup({
+                filetypes = { "python" },
+                root_dir = util.root_pattern(".git", "pyproject.toml", "setup.py"),
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    -- We'll use none-ls for formatting, so disable pyright's formatter
+                    if client.name == "pyright" then
+                        client.server_capabilities.documentFormattingProvider = false
+                    end
+                    
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        buffer = bufnr,
+                        callback = function() vim.lsp.buf.format() end,
+                    })
+                end,
+                settings = {
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            diagnosticMode = "workspace",
+                            useLibraryCodeForTypes = true,
+                        }
+                    }
+                }
+            })
+
             -- Python LSP setup with smart environment detection
             -- lspconfig.pylsp.setup({
             --     cmd = pylsp_cmd,
