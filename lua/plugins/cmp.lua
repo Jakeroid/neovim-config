@@ -50,11 +50,6 @@ return {
                 }),
             })
 
-            -- Enable completion for LSP
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            require("lspconfig").phpactor.setup({
-                capabilities = capabilities,
-            })
         end,
     }
 }
