@@ -7,10 +7,6 @@ return {
             local lspconfig = require("lspconfig")
             local util = require("lspconfig.util")
 
-        config = function()
-            local lspconfig = require("lspconfig")
-            local util = require("lspconfig.util")
-
             -- Check if cmp-nvim-lsp is available to get capabilities
             local cmp_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
             local capabilities = cmp_lsp_ok and cmp_nvim_lsp.default_capabilities() or {}
