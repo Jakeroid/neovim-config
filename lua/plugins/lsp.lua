@@ -51,7 +51,10 @@ return {
                     root_dir = util.root_pattern("composer.json", ".git"),
                     capabilities = capabilities,
                     on_attach = function(client, bufnr)
-                        -- Enable formatting on save if server supports it
+                        -- Apply common keymaps and settings FIRST
+                        common_on_attach(client, bufnr) -- <<< ADD THIS LINE
+
+                        -- PHP-specific on_attach logic AFTER common setup
                         if client.server_capabilities.documentFormattingProvider then
                             vim.api.nvim_create_autocmd("BufWritePre", {
                                 buffer = bufnr,
@@ -76,8 +79,11 @@ return {
                     root_dir = util.root_pattern(".git", "pyproject.toml", "setup.py"),
                     capabilities = capabilities,
                     on_attach = function(client, bufnr)
-                        -- Disable pyright's formatter since we use none-ls (black, isort)
-                        client.server_capabilities.documentFormattingProvider = false
+                        -- Apply common keymaps and settings FIRST
+                        common_on_attach(client, bufnr) -- <<< ADD THIS LINE
+
+                        -- Python-specific on_attach logic AFTER common setup
+                        client.server_capabilities.documentFormattingProvider = false -- Disable pyright formatting
 
                         -- Remove the BufWritePre autocmd for pyright formatting,
                         -- as none-ls should handle Python formatting on save.
