@@ -1,4 +1,4 @@
-# neovim-config
+# Jakeroid a.k.a. Ivan K. Neovim Config
 My personal NeoVim config.
 
 ## Code Intelligence and Formatting
