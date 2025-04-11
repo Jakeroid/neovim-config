@@ -24,7 +24,24 @@ vim.opt.cursorline = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Tabulation and Indents
+-- Configure diagnostics for better feedback
+vim.diagnostic.config({
+    virtual_text = true, -- Show errors inline
+    signs = true,        -- Show signs in the sign column (you likely already have this)
+    underline = true,    -- Underline the problematic code
+    update_in_insert = false, -- Don't update diagnostics while typing (can be distracting)
+    severity_sort = true, -- Sort diagnostics by severity
+    float = {            -- Configuration for the floating window (used by <leader>e keymap below)
+        source = "always", -- Show source of diagnostic (e.g., "phpactor", "pyright")
+        border = "rounded",
+    },
+})
+
+-- Change diagnostic signs (optional, requires Nerd Font)
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
