@@ -11,6 +11,43 @@ This Neovim setup uses `lazy.nvim` for plugin management. It's configured for mo
     *   Uses `nvim-cmp` for autocompletion (LSP, buffer, path, snippets).
 *   **Key Feature:** Both LSP servers (`phpactor`, `pyright`) and `none-ls` formatters/linters are **conditionally loaded** only if their corresponding external tools are detected on the system, making the configuration robust even if some tools aren't installed. Python formatting is explicitly delegated to `none-ls`.
 
+## Installation
+
+1.  **Prerequisites:**
+    *   [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim) (version 0.11 or later recommended).
+    *   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+    *   (Optional but Recommended) A [Nerd Font](https://www.nerdfonts.com/) installed and configured in your terminal for icons.
+    *   (Optional) External tools for enhanced features (e.g., `phpactor`, `pyright-langserver`, `php-cs-fixer`, `black`, `isort`, `mypy`, `flake8`). The configuration will work without them but provide fewer features.
+
+2.  **Clone the Repository:**
+    *   Clone this repository to a location of your choice. A common place is `~/.config/nvim`.
+    *   If you clone it elsewhere, adjust the path in the next step.
+
+    ```bash
+    # Example: Clone directly into the standard Neovim config location
+    # Make sure to back up your existing ~/.config/nvim first if you have one!
+    git clone https://github.com/your-username/your-repo-name.git ~/.config/nvim
+    ```
+    *   *Alternatively*, if you prefer to keep the repository elsewhere (e.g., in a `~/dotfiles` directory):
+        ```bash
+        # Clone to a different location
+        git clone https://github.com/your-username/your-repo-name.git ~/dotfiles/nvim
+
+        # Back up your existing Neovim config (if any)
+        # mv ~/.config/nvim ~/.config/nvim.bak
+
+        # Create a symbolic link
+        ln -s ~/dotfiles/nvim ~/.config/nvim
+        ```
+        *(Replace `your-username/your-repo-name` with the actual repository URL)*
+
+3.  **Launch Neovim:**
+    *   Open Neovim (`nvim`).
+    *   `lazy.nvim` will automatically bootstrap itself and install all the configured plugins on the first run. Wait for this process to complete.
+
+4.  **Enjoy!**
+    *   Your Neovim setup is ready. Explore the features and consider adding your own customizations as described below.
+
 ## Custom Configuration
 
 This configuration supports user-specific overrides without modifying the core files tracked by Git.
