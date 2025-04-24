@@ -15,19 +15,27 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load leader key 
--- It's in separate file to make integration with WezTerm
-require("config.leader")
+-- NOTE: config.leader and config.settings are now loaded in init.lua before this file
 
--- Load mine settings from separate file
-require("config.settings")
+-- Build the plugin specification list
+local plugin_specs = {
+    -- Import the base plugins first
+    { import = "plugins" },
+}
+
+-- Check if the custom plugins directory exists (lua/custom/plugins/)
+-- This directory should be ignored by git
+local custom_plugins_path = vim.fn.stdpath('config') .. '/lua/custom/plugins'
+if vim.fn.isdirectory(custom_plugins_path) == 1 then
+    -- If the directory exists, add the custom plugins import to lazy's spec
+    -- lazy.nvim will automatically load .lua files from lua/custom/plugins/
+    table.insert(plugin_specs, { import = "custom.plugins" })
+    vim.notify("Loading custom plugins from lua/custom/plugins/", vim.log.levels.INFO)
+end
 
 -- Setup lazy.nvim
 require("lazy").setup({
-    spec = {
-        -- import your plugins
-        { import = "plugins" },
-    },
+    spec = plugin_specs, -- Use the dynamically built spec list
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
     install = { colorscheme = { "habamax" } },
