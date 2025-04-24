@@ -24,10 +24,20 @@ vim.opt.cursorline = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Configure diagnostics for better feedback
+-- Configure diagnostics for better feedback using modern API (Neovim 0.10+)
 vim.diagnostic.config({
     virtual_text = true, -- Show errors inline
-    signs = true,        -- Show signs in the sign column (you likely already have this)
+    signs = {
+         -- Use icons for signs in the sign column
+         text = {
+             [vim.diagnostic.severity.ERROR] = " ", -- nf-fa-times
+             [vim.diagnostic.severity.WARN]  = " ", -- nf-fa-warning / nf-fa-exclamation_triangle
+             [vim.diagnostic.severity.HINT]  = " ", -- nf-oct-light_bulb
+             [vim.diagnostic.severity.INFO]  = " ", -- nf-fa-info
+         },
+         -- Ensure signs are shown. 'true' uses the definitions in 'text'.
+         active = true, 
+    },
     underline = true,    -- Underline the problematic code
     update_in_insert = false, -- Don't update diagnostics while typing (can be distracting)
     severity_sort = true, -- Sort diagnostics by severity
@@ -37,14 +47,7 @@ vim.diagnostic.config({
     },
 })
 
--- Change diagnostic signs (optional, requires Nerd Font)
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end -- <<< ADD THIS LINE
-
--- Indentation settings (ensure these are outside the loop)
+-- Indentation settings
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
