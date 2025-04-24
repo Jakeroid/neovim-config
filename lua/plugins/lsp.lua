@@ -106,26 +106,6 @@ return {
                 vim.notify("LSP: 'pyright-langserver' executable not found. Python LSP support disabled.", vim.log.levels.WARN)
             end
 
-            -- --- Add setups for other language servers here, wrapped in similar checks ---
-            -- Example for Lua (using lua-language-server, often named lua-ls or lua-language-server)
-            -- if vim.fn.executable("lua-language-server") == 1 then
-            --     lspconfig.lua_ls.setup({
-            --         capabilities = capabilities,
-            --         on_attach = function(client, bufnr)
-            --             -- Lua specific on_attach
-            --         end,
-            --         settings = {
-            --             Lua = {
-            --                 runtime = { version = 'LuaJIT' },
-            --                 diagnostics = { globals = {'vim'} },
-            --                 -- Add other lua_ls settings
-            --             }
-            --         }
-            --     })
-            -- else
-            --     vim.notify("LSP: 'lua-language-server' executable not found. Lua LSP support disabled.", vim.log.levels.WARN)
-            -- end
-
         end,
     },
 }
