@@ -19,10 +19,11 @@ return {
             diagnostics = {
                 enable = true,         -- Show LSP diagnostics
                 icons = {
-                    hint = "",        -- Nerd Font icons for diagnostic types
-                    info = "",        -- (Requires Nerd Font installed)
-                    warning = "",
-                    error = "",
+                    -- Use the same icons as defined in lua/config/settings.lua
+                    hint = "",        -- nf-oct-light_bulb
+                    info = "",        -- nf-fa-info
+                    warning = "",     -- nf-fa-warning / nf-fa-exclamation_triangle
+                    error = "",        -- nf-fa-times
                 },
             },
 
@@ -73,8 +74,8 @@ return {
 
             -- Filter Configuration: hide specific directories/files
             filters = {
-                custom = { 
-                    "__pycache__", 
+                custom = {
+                    "__pycache__",
                     ".DS_Store",
                     ".git$",           -- Hide .git directory (exact match)
                     ".ropeproject",
@@ -87,15 +88,15 @@ return {
 
         -- Keybindings
         vim.keymap.set("n", "<leader>tt", ":NvimTreeFocus<CR>", {
-            noremap = true,            
-            silent = true,             
-            desc = "Toggle File Explorer", 
+            noremap = true,
+            silent = true,
+            desc = "Toggle File Explorer",
         })
 
-        vim.keymap.set("n", "<leader>tc", ":NvimTreeClose<CR>", { 
-            noremap = true, 
+        vim.keymap.set("n", "<leader>tc", ":NvimTreeClose<CR>", {
+            noremap = true,
             silent = true,
-            desc = "Close File Explorer" 
+            desc = "Close File Explorer"
         })
     end,
 }
