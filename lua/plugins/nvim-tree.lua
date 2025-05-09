@@ -48,8 +48,8 @@ return {
                 icons = {
                     glyphs = {
                         folder = {     -- Folder arrow symbols
-                            arrow_closed = "▶", -- Closed folder
-                            arrow_open = "▼",   -- Open folder
+                            arrow_closed = "", -- Nerd Font chevron right
+                            arrow_open = "",   -- Nerd Font chevron down
                         },
                     },
                 },
