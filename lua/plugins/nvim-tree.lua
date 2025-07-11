@@ -36,7 +36,7 @@ return {
 
             -- View Layout
             view = {
-                width = 50,            -- Sidebar width in columns
+                adaptive_size = true,
                 side = "left",         -- Position: "left" or "right"
                 number = false,        -- Disable line numbers
                 relativenumber = false,-- Disable relative line numbers
