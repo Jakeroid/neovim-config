@@ -1,5 +1,6 @@
 return {
     "utilyre/barbecue.nvim",
+    enabled = false,
     commit = "3e31404f0b93a2c30d151abf0648650ac811c664",
     name = "barbecue",
     version = "*",
