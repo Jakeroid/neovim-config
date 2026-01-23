@@ -1,6 +1,8 @@
 return {
     "nvim-tree/nvim-tree.lua",
-    commit = "c09ff35de503a41fa62465c6b4ae72d96e7a7ce4",
+    tag = "v1.15.0",
+    -- previous working version
+    -- commit = "c09ff35de503a41fa62465c6b4ae72d96e7a7ce4",
     lazy = false,                      -- Load immediately at startup
     dependencies = {
         "nvim-tree/nvim-web-devicons", -- Provides file type icons
@@ -67,7 +69,7 @@ return {
                 open_file = {
                     quit_on_open = false, -- Keep tree open after file open
                     window_picker = {
-                        enable = false,    -- Allow choosing window to open in
+                        enable = true,    -- Allow choosing window to open in
                     },
                 },
             },

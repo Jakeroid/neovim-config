@@ -2,7 +2,7 @@ return {
     -- Material Theme 
     { 
         "marko-cerovac/material.nvim", 
-        commit = "c8ff153d2c2b22f8b2c9bcce0d741ab55c00cfed",
+        commit = "52c121551ffbf7b8f25bed3ef5878e5d6896c786",
         name = "material", 
         priority = 1000,
         config = function()
@@ -77,7 +77,7 @@ return {
                     darker = true -- Enable higher contrast text for darker style
                 },
 
-                lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
+                lualine_style = "stealth", -- Lualine style ( can be 'stealth' or 'default' )
 
                 async_loading = true, -- Load parts of the theme asynchronously for faster startup (turned on by default)
 

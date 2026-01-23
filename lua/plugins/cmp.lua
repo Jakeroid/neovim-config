@@ -1,7 +1,11 @@
 return {
     {
         "hrsh7th/nvim-cmp",  -- Completion engine
-        commit = "c27370703e798666486e3064b64d59eaf4bdc6d5",
+        tag = "v0.0.2",
+
+        -- previous working version
+        -- commit = "c27370703e798666486e3064b64d59eaf4bdc6d5",
+
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",      -- LSP source for nvim-cmp
             "hrsh7th/cmp-buffer",        -- Buffer completions

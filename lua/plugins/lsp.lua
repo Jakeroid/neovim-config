@@ -1,7 +1,9 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        commit = "69d2876c0d40e8714b3a56a02eb16fab3409e960",
+        tag = "v2.5.0",
+        -- previously working commit
+        -- commit = "69d2876c0d40e8714b3a56a02eb16fab3409e960",
         dependencies = { "hrsh7th/cmp-nvim-lsp" },
         config = function()
             local lspconfig = require("lspconfig")

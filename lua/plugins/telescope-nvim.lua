@@ -1,7 +1,7 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        commit = "814f102cd1da3dc78c7d2f20f2ef3ed3cdf0e6e4",
+        tag = "v0.2.1",
         dependencies = {
             "nvim-lua/plenary.nvim",  -- Required by Telescope
             {
@@ -43,7 +43,6 @@ return {
                         case_mode = "smart_case",  -- Ignore case unless uppercase used
                     },
                     undo = {
-
                     },
                 },
             }

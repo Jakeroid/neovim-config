@@ -1,7 +1,9 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        commit = "cfc6f2c117aaaa82f19bcce44deec2c194d900ab",
+        tag = "v0.10.0",
+        -- previously working good commit 
+        -- commit = "cfc6f2c117aaaa82f19bcce44deec2c194d900ab",
         config = function()
             require("nvim-treesitter.configs").setup {
                 ensure_installed = { 
