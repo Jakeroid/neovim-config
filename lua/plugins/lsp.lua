@@ -40,10 +40,6 @@ return {
                 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts) -- Add diagnostics to location list
             end
 
-            -- --- PHP LSP Setup --- 
-            local cmp_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-            local capabilities = cmp_lsp_ok and cmp_nvim_lsp.default_capabilities() or {}
-
             -- --- PHP LSP Setup ---
             -- Check if the 'phpactor' executable exists before setting up the server
             if vim.fn.executable("phpactor") == 1 then
@@ -53,19 +49,7 @@ return {
                     root_dir = util.root_pattern("composer.json", ".git"),
                     capabilities = capabilities,
                     on_attach = function(client, bufnr)
-                        -- Apply common keymaps and settings FIRST
-                        common_on_attach(client, bufnr) -- <<< ADD THIS LINE
-
-                        -- PHP-specific on_attach logic AFTER common setup
-                        if client.server_capabilities.documentFormattingProvider then
-                            vim.api.nvim_create_autocmd("BufWritePre", {
-                                buffer = bufnr,
-                                -- Use format { async = false } for synchronous format on save
-                                -- Filter ensures only phpactor tries to format PHP files via LSP
-                                callback = function() vim.lsp.buf.format({ async = false, filter = function(c) return c.name == "phpactor" end }) end,
-                            })
-                        end
-                        -- Add other keymaps or settings specific to PHP LSP here
+                        common_on_attach(client, bufnr)
                     end,
                 })
             else

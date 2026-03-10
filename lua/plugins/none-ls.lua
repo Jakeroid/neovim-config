@@ -39,7 +39,19 @@ return {
             add_source_if_exec_exists("isort", null_ls.builtins.formatting.isort)
 
             -- Python Diagnostics: Check for 'mypy'
-            add_source_if_exec_exists("mypy", null_ls.builtins.diagnostics.mypy)
+            if vim.fn.executable("mypy") == 1 then
+                local mypy_ok, mypy = pcall(require, "none-ls.diagnostics.mypy")
+                if mypy_ok then
+                    table.insert(available_sources, mypy)
+                else
+                    local builtin_mypy = null_ls.builtins.diagnostics.mypy
+                    if builtin_mypy then
+                        table.insert(available_sources, builtin_mypy)
+                    else
+                        vim.notify("none-ls: Failed to load mypy source.", vim.log.levels.WARN)
+                    end
+                end
+            end
 
             -- Flake8 Diagnostics: Check for 'flake8'
             if vim.fn.executable("flake8") == 1 then
