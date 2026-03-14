@@ -1,8 +1,5 @@
--- Load .nvim.lua from project root for per-project overrides --
-vim.opt.exrc   = true   -- auto-load .nvim.lua from project root
-vim.opt.secure = true   -- disallow shell/write cmds in .nvim.lua
---
--- To disable specific tools in a project, create .nvim.lua at the project root:
+-- Per-project tool overrides --
+-- Create .nvim.lua in the project root to disable specific tools:
 --
 --   vim.g.disabled_tools = { "black", "flake8" }
 --
