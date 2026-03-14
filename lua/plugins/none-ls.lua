@@ -14,8 +14,8 @@ return {
             local available_sources = {}
 
             -- Per-project disable list: set in .nvim.lua at project root
-            -- Example: vim.g.disabled_python_tools = { "black", "flake8" }
-            local disabled = vim.g.disabled_python_tools or {}
+            -- Example: vim.g.disabled_tools = { "black", "flake8" }
+            local disabled = vim.g.disabled_tools or {}
 
             -- Add a source only if the executable exists and the tool is not disabled
             local function add_source(name, source)

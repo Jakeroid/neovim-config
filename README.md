@@ -102,3 +102,27 @@ This configuration supports user-specific overrides without modifying the core f
         ```
 
 Any files placed in `lua/custom/` will automatically be loaded if they exist, allowing you to tailor the configuration to your specific needs without creating conflicts with future updates from the main repository.
+
+## Per-Project Tool Configuration
+
+You can disable specific formatters, linters, or LSP servers for individual projects by creating a `.nvim.lua` file in the project root.
+
+**Example `.nvim.lua`:**
+```lua
+vim.g.disabled_tools = { "flake8", "mypy" }
+```
+
+Neovim loads this file automatically when you open the project (via `exrc`).
+
+**Available tools:**
+
+| Key | Role | Language |
+|-----|------|----------|
+| `"php-cs-fixer"` | Formatter — formats PHP files on save | PHP |
+| `"black"` | Formatter — formats Python files on save | Python |
+| `"isort"` | Formatter — sorts import statements on save | Python |
+| `"flake8"` | Linter — reports style and logic errors | Python |
+| `"mypy"` | Type checker — reports type annotation errors | Python |
+| `"pyright"` | LSP server — completion, go-to-definition, hover | Python |
+
+> Each tool is only active if its executable exists on the system. The disable list is an additional override on top of that check.
