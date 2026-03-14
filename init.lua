@@ -16,5 +16,12 @@ if vim.fn.filereadable(custom_settings_path) == 1 then
     end
 end
 
+-- Load project-local .nvim.lua before plugins so globals like
+-- vim.g.disabled_tools are available when plugin configs run
+local nvim_lua = vim.fn.getcwd() .. "/.nvim.lua"
+if vim.fn.filereadable(nvim_lua) == 1 then
+    dofile(nvim_lua)
+end
+
 -- Load Plugins Manager (lazy.nvim) and setup plugins
 require("config.lazy")

@@ -112,7 +112,7 @@ You can disable specific formatters, linters, or LSP servers for individual proj
 vim.g.disabled_tools = { "flake8", "mypy" }
 ```
 
-Neovim loads this file automatically when you open the project (via `exrc`).
+Neovim loads this file automatically when you open the project (before plugins initialise, so the settings take effect immediately).
 
 **Available tools:**
 
