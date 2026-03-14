@@ -1,4 +1,8 @@
--- Enable mouse --  
+-- Load .nvim.lua from project root for per-project overrides --
+vim.opt.exrc   = true   -- auto-load .nvim.lua from project root
+vim.opt.secure = true   -- disallow shell/write cmds in .nvim.lua
+
+-- Enable mouse --
 vim.opt.mouse = 'a'
 
 -- Don't show "Show Mode" since I have status line plugin

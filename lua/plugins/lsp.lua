@@ -57,9 +57,10 @@ return {
                 vim.notify("LSP: 'phpactor' executable not found. PHP LSP support disabled.", vim.log.levels.WARN)
             end
 
-            -- --- Python LSP Setup --- 
-            -- Check if the 'pyright-langserver' executable exists before setting up the server
-            if vim.fn.executable("pyright-langserver") == 1 then
+            -- --- Python LSP Setup ---
+            -- Check if the 'pyright-langserver' executable exists and is not disabled
+            local disabled_py = vim.g.disabled_python_tools or {}
+            if vim.fn.executable("pyright-langserver") == 1 and not vim.tbl_contains(disabled_py, "pyright") then
                 lspconfig.pyright.setup({
                     filetypes = { "python" },
                     root_dir = util.root_pattern(".git", "pyproject.toml", "setup.py"),
