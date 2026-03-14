@@ -1,6 +1,18 @@
 -- Load .nvim.lua from project root for per-project overrides --
 vim.opt.exrc   = true   -- auto-load .nvim.lua from project root
 vim.opt.secure = true   -- disallow shell/write cmds in .nvim.lua
+--
+-- To disable specific tools in a project, create .nvim.lua at the project root:
+--
+--   vim.g.disabled_tools = { "black", "flake8" }
+--
+-- Available tools:
+--   "php-cs-fixer" — PHP formatter        (formats PHP files on save)
+--   "black"        — Python formatter      (formats Python files on save)
+--   "isort"        — Python import sorter  (sorts import statements on save)
+--   "flake8"       — Python linter         (reports style and logic errors)
+--   "mypy"         — Python type checker   (reports type annotation errors)
+--   "pyright"      — Python LSP server     (completion, go-to-definition, hover)
 
 -- Enable mouse --
 vim.opt.mouse = 'a'
