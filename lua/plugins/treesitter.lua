@@ -1,27 +1,35 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        tag = "v0.10.0",
-        -- previously working good commit 
-        -- commit = "cfc6f2c117aaaa82f19bcce44deec2c194d900ab",
-        config = function()
-            require("nvim-treesitter.configs").setup {
-                ensure_installed = { 
-                    "lua", 
-                    "python", 
-                    "php",
-                    "sql",
-                    "javascript", 
-                    "html", 
-                    "css"
-                },  
-                auto_install = true,
-                additional_vim_regex_highlighting = false,
-                highlight = { enable = true }, 
-                indent = { enable = true }, 
-            }
-            vim.wo.foldmethod = 'expr'
-            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        branch = "main",
+        lazy = false,
+        build = function()
+            require("nvim-treesitter").update()
         end,
-    }
+        config = function()
+            local parsers = {
+                "lua",
+                "python",
+                "php",
+                "sql",
+                "javascript",
+                "html",
+                "css",
+            }
+
+            require("nvim-treesitter").install(parsers)
+
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = parsers,
+                callback = function(args)
+                    pcall(vim.treesitter.start, args.buf)
+                    vim.bo[args.buf].indentexpr =
+                        "v:lua.require'nvim-treesitter'.indentexpr()"
+                end,
+            })
+
+            vim.wo.foldmethod = "expr"
+            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        end,
+    },
 }
