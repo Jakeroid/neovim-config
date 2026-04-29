@@ -17,7 +17,15 @@ return {
                 "css",
             }
 
-            require("nvim-treesitter").install(parsers)
+            local ts = require("nvim-treesitter")
+            if type(ts.install) == "function" then
+                ts.install(parsers)
+            else
+                vim.notify(
+                    "nvim-treesitter: legacy checkout detected, run :Lazy sync to switch to main branch",
+                    vim.log.levels.WARN
+                )
+            end
 
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = parsers,
