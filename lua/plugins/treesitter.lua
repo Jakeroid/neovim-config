@@ -4,7 +4,10 @@ return {
         branch = "main",
         lazy = false,
         build = function()
-            require("nvim-treesitter").update()
+            local ok, ts = pcall(require, "nvim-treesitter")
+            if ok and type(ts.update) == "function" then
+                ts.update()
+            end
         end,
         config = function()
             local parsers = {
